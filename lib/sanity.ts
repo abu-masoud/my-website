@@ -104,7 +104,7 @@ export function getFeaturedPosts() {
 export function getSiteSettings() {
   return sanityFetch(
     `*[_type == "siteSettings"][0] {
-      siteName, seoDescription, email, basedIn, availableFor,
+      siteName, seoDescription, email, basedIn, availableFor, instagram, linkedin,
       heroLine1, heroLine2, heroLine3, heroSubtitle, heroCTALabel, heroTagline,
       aboutPhoto, aboutHeadline, aboutBody, skills, timeline,
       footerTagline, marqueeWords

@@ -39,6 +39,18 @@ export const siteSettingsSchema = defineType({
       group: "general",
     }),
     defineField({
+      name: "instagram",
+      title: "Instagram URL",
+      type: "url",
+      group: "general",
+    }),
+    defineField({
+      name: "linkedin",
+      title: "LinkedIn URL",
+      type: "url",
+      group: "general",
+    }),
+    defineField({
       name: "availableFor",
       title: "Available For (list)",
       type: "array",
