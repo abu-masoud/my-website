@@ -63,6 +63,10 @@ export default async function HomePage() {
                 <ProjectCard project={p} index={i} />
               </FadeIn>
             ))}
+            {/* Fill trailing empty cell so bg-[#1e1e1e] doesn't show */}
+            {projects.length % 2 !== 0 && (
+              <div className="bg-[#0c0c0c] aspect-[4/3] hidden md:block" />
+            )}
           </div>
         )}
       </section>
