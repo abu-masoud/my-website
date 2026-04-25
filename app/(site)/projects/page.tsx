@@ -58,15 +58,9 @@ export default async function ProjectsPage() {
 
       {projects.length === 0 ? (
         <div className="border border-dashed border-[#1e1e1e] p-20 text-center">
-          <p className="font-[family-name:var(--font-inter)] text-sm text-[#6b6b6b] mb-4">
-            No projects yet. Add your first project in Sanity Studio.
+          <p className="font-[family-name:var(--font-inter)] text-sm text-[#333333]">
+            Coming soon
           </p>
-          <Link
-            href="/studio"
-            className="inline-flex items-center gap-1 text-xs tracking-[0.15em] uppercase text-[#c9956a]"
-          >
-            Open Studio <ArrowUpRight size={11} />
-          </Link>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1e1e1e]">

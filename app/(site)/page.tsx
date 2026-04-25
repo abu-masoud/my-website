@@ -93,7 +93,7 @@ export default async function HomePage() {
         </div>
 
         {projects.length === 0 ? (
-          <EmptyState message="No featured projects yet — add some in your Sanity Studio." href="/studio" />
+          <EmptyState />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#1e1e1e]">
             {projects.map((p: { _id: string; title: string; slug: { current: string }; coverImage?: unknown; category?: string; year?: string }, i: number) => (
@@ -131,7 +131,7 @@ export default async function HomePage() {
         </div>
 
         {posts.length === 0 ? (
-          <EmptyState message="No posts yet — write your first one in Sanity Studio." href="/studio" />
+          <EmptyState />
         ) : (
           <div className="flex flex-col divide-y divide-[#1e1e1e]">
             {posts.map((post: { _id: string; title: string; slug: { current: string }; publishedAt?: string; category?: string; readTime?: number }) => (
@@ -185,13 +185,12 @@ function PostRow({ post }: { post: { title: string; slug: { current: string }; p
   );
 }
 
-function EmptyState({ message, href }: { message: string; href: string }) {
+function EmptyState() {
   return (
     <div className="border border-dashed border-[#1e1e1e] p-12 text-center">
-      <p className="font-[family-name:var(--font-inter)] text-sm text-[#6b6b6b] mb-4">{message}</p>
-      <Link href={href} className="inline-flex items-center gap-1 text-xs tracking-[0.15em] uppercase text-[#c9956a] hover:text-[#e0b48a] transition-colors">
-        Open Studio <ArrowUpRight size={11} />
-      </Link>
+      <p className="font-[family-name:var(--font-inter)] text-sm text-[#333333]">
+        Coming soon
+      </p>
     </div>
   );
 }
