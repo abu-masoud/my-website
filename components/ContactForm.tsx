@@ -12,6 +12,7 @@ export default function ContactForm({ email }: { email: string }) {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [turnstileToken, setTurnstileToken] = useState<string>("");
+  const [turnstileFailed, setTurnstileFailed] = useState(false);
   const loadedAt = useRef<number>(Date.now());
 
   useEffect(() => {
@@ -38,7 +39,8 @@ export default function ContactForm({ email }: { email: string }) {
     if (!name) errs.name = "Required";
     if (!userEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)) errs.email = "Valid email required";
     if (!message || message.length < 10) errs.message = "At least 10 characters";
-    if (SITE_KEY && !turnstileToken) errs.captcha = "Please wait for verification to complete";
+    // Only block if Turnstile is active AND hasn't succeeded AND hasn't errored out
+    if (SITE_KEY && !turnstileToken && !turnstileFailed) errs.captcha = "Please wait for verification to complete";
     if (Object.keys(errs).length) { setErrors(errs); return; }
 
     setErrors({});
@@ -136,7 +138,7 @@ export default function ContactForm({ email }: { email: string }) {
         <Turnstile
           siteKey={SITE_KEY}
           onSuccess={setTurnstileToken}
-          onError={() => setTurnstileToken("")}
+          onError={() => { setTurnstileToken(""); setTurnstileFailed(true); }}
           onExpire={() => setTurnstileToken("")}
           options={{ theme: "dark", size: "invisible" }}
         />
