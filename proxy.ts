@@ -36,6 +36,14 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const ua = request.headers.get("user-agent") ?? "";
 
+  // 0 — Protect /studio behind password cookie
+  if (pathname.startsWith("/studio")) {
+    const cookie = request.cookies.get("studio_access");
+    if (!cookie || cookie.value !== "1") {
+      return NextResponse.redirect(new URL("/studio-login", request.url));
+    }
+  }
+
   // 1 — Block known scanner user-agents
   if (BLOCKED_UA.some((re) => re.test(ua))) {
     return new NextResponse("Forbidden", { status: 403 });
