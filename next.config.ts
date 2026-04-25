@@ -7,14 +7,14 @@ const siteCSP = [
   "default-src 'self'",
   // Allow unsafe-eval in dev (React needs it for error overlays / source maps)
   isDev
-    ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
-    : "script-src 'self' 'unsafe-inline'",
+    ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com"
+    : "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' https://cdn.sanity.io data: blob:",
   "media-src 'none'",
-  "connect-src 'self' https://*.sanity.io https://api.sanity.io",
-  "frame-src 'none'",
+  "connect-src 'self' https://*.sanity.io https://api.sanity.io https://challenges.cloudflare.com",
+  "frame-src https://challenges.cloudflare.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
