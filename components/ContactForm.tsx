@@ -1,11 +1,15 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { Turnstile } from "@marsidev/react-turnstile";
 import { ArrowUpRight } from "lucide-react";
+
+const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
 export default function ContactForm({ email }: { email: string }) {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
   const loadedAt = useRef<number>(Date.now());
 
   useEffect(() => {
@@ -20,7 +24,7 @@ export default function ContactForm({ email }: { email: string }) {
     // Honeypot check
     if (data.get("_honey")) return;
 
-    // Time gate — reject if submitted in under 3 seconds
+    // Time gate
     if (Date.now() - loadedAt.current < 3000) return;
 
     const name = (data.get("name") as string).trim();
@@ -32,6 +36,7 @@ export default function ContactForm({ email }: { email: string }) {
     if (!name) errs.name = "Required";
     if (!userEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)) errs.email = "Valid email required";
     if (!message || message.length < 10) errs.message = "At least 10 characters";
+    if (SITE_KEY && !turnstileToken) errs.captcha = "Please wait for verification to complete";
     if (Object.keys(errs).length) { setErrors(errs); return; }
 
     setErrors({});
@@ -41,11 +46,12 @@ export default function ContactForm({ email }: { email: string }) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email: userEmail, subject, message }),
+        body: JSON.stringify({ name, email: userEmail, subject, message, turnstileToken }),
       });
       if (!res.ok) throw new Error("Failed");
       setStatus("success");
       form.reset();
+      setTurnstileToken("");
     } catch {
       setStatus("error");
     }
@@ -67,7 +73,7 @@ export default function ContactForm({ email }: { email: string }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-      {/* Honeypot — hidden from humans */}
+      {/* Honeypot — invisible to humans */}
       <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -123,9 +129,22 @@ export default function ContactForm({ email }: { email: string }) {
         {errors.message && <p className="mt-1 text-xs text-red-700">{errors.message}</p>}
       </div>
 
+      {/* Cloudflare Turnstile — invisible bot check */}
+      {SITE_KEY && (
+        <Turnstile
+          siteKey={SITE_KEY}
+          onSuccess={setTurnstileToken}
+          onError={() => setTurnstileToken("")}
+          onExpire={() => setTurnstileToken("")}
+          options={{ theme: "dark", size: "invisible" }}
+        />
+      )}
+      {errors.captcha && <p className="text-xs text-red-700">{errors.captcha}</p>}
+
       {status === "error" && (
         <p className="font-[family-name:var(--font-inter)] text-xs text-red-700">
-          Something went wrong — try emailing directly at <a href={`mailto:${email}`} className="underline">{email}</a>
+          Something went wrong — try emailing directly at{" "}
+          <a href={`mailto:${email}`} className="underline">{email}</a>
         </p>
       )}
 
