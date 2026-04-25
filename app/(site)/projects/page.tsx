@@ -66,10 +66,11 @@ export default async function ProjectsPage() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1e1e1e]">
           {projects.map((p, i) => (
+
             <FadeIn key={p._id} delay={i * 0.06}>
             <Link
               href={`/projects/${p.slug.current}`}
-              className="group relative bg-[#0c0c0c] overflow-hidden block aspect-[3/4]"
+              className="group relative bg-[#0c0c0c] overflow-hidden block aspect-[3/4] h-full"
             >
               {p.coverImage ? (
                 <Image
@@ -121,6 +122,13 @@ export default async function ProjectsPage() {
             </Link>
             </FadeIn>
           ))}
+          {/* Fill trailing empty grid cells so bg-[#1e1e1e] doesn't show */}
+          {Array.from({ length: (3 - (projects.length % 3)) % 3 }).map((_, i) => (
+            <div key={`empty-${i}`} className="bg-[#0c0c0c] aspect-[3/4] hidden lg:block" />
+          ))}
+          {projects.length % 2 !== 0 && (
+            <div className="bg-[#0c0c0c] aspect-[3/4] hidden md:block lg:hidden" />
+          )}
         </div>
       )}
     </div>

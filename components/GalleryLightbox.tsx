@@ -63,6 +63,10 @@ export default function GalleryLightbox({ images }: Props) {
             </div>
           </button>
         ))}
+        {/* Fill trailing empty cell on odd image count */}
+        {images.length % 2 !== 0 && (
+          <div className="aspect-[4/3] bg-[#0c0c0c] hidden md:block" />
+        )}
       </div>
 
       {/* ── Lightbox ─────────────────────────────────────────────────────── */}
