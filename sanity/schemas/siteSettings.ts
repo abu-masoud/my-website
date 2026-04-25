@@ -96,6 +96,13 @@ export const siteSettingsSchema = defineType({
 
     // ── About ──────────────────────────────────────────────────────────────
     defineField({
+      name: "aboutPhoto",
+      title: "About — Profile Photo",
+      type: "image",
+      options: { hotspot: true },
+      group: "about",
+    }),
+    defineField({
       name: "aboutHeadline",
       title: "About — Large opening paragraph",
       type: "text",

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getAllProjects } from "@/lib/sanity";
 import { urlFor } from "@/lib/sanity";
 import { ArrowUpRight } from "lucide-react";
+import { FadeIn } from "@/components/FadeIn";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "Projects" };
@@ -34,14 +35,14 @@ export default async function ProjectsPage() {
   return (
     <div className="pt-32 pb-24 px-6 md:px-10 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="mb-16">
+      <FadeIn className="mb-16">
         <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.3em] uppercase text-[#6b6b6b] mb-3">
           Selected Work
         </p>
         <h1 className="font-[family-name:var(--font-syne)] text-5xl md:text-7xl font-800 text-[#f0ede8] leading-none">
           Projects
         </h1>
-      </div>
+      </FadeIn>
 
       {/* Category pills — client-side filtering would need "use client";
           keeping it static here with all projects shown */}
@@ -65,8 +66,8 @@ export default async function ProjectsPage() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1e1e1e]">
           {projects.map((p, i) => (
+            <FadeIn key={p._id} delay={i * 0.06}>
             <Link
-              key={p._id}
               href={`/projects/${p.slug.current}`}
               className="group relative bg-[#0c0c0c] overflow-hidden block aspect-[3/4]"
             >
@@ -118,6 +119,7 @@ export default async function ProjectsPage() {
                 <ArrowUpRight size={14} className="text-[#c9956a]" />
               </div>
             </Link>
+            </FadeIn>
           ))}
         </div>
       )}

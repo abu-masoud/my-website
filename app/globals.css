@@ -31,6 +31,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Hide default cursor on pointer-precise (mouse) devices */
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
+
 ::selection {
   background-color: #c9956a;
   color: #0c0c0c;

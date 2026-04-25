@@ -106,7 +106,7 @@ export function getSiteSettings() {
     `*[_type == "siteSettings"][0] {
       siteName, seoDescription, email, basedIn, availableFor,
       heroLine1, heroLine2, heroLine3, heroSubtitle, heroCTALabel, heroTagline,
-      aboutHeadline, aboutBody, skills, timeline,
+      aboutPhoto, aboutHeadline, aboutBody, skills, timeline,
       footerTagline, marqueeWords
     }`,
     {}, ["siteSettings"]

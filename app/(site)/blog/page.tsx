@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllPosts, urlFor } from "@/lib/sanity";
 import { ArrowUpRight } from "lucide-react";
+import { FadeIn } from "@/components/FadeIn";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "Writing" };
@@ -26,14 +27,14 @@ export default async function BlogPage() {
   return (
     <div className="pt-32 pb-24 px-6 md:px-10 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="mb-16">
+      <FadeIn className="mb-16">
         <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.3em] uppercase text-[#6b6b6b] mb-3">
           Thoughts & Theory
         </p>
         <h1 className="font-[family-name:var(--font-syne)] text-5xl md:text-7xl font-800 text-[#f0ede8] leading-none">
           Writing
         </h1>
-      </div>
+      </FadeIn>
 
       {posts.length === 0 ? (
         <div className="border border-dashed border-[#1e1e1e] p-20 text-center">
@@ -45,6 +46,7 @@ export default async function BlogPage() {
         <>
           {/* Featured post — large card */}
           {featured && (
+            <FadeIn delay={0.1}>
             <Link
               href={`/blog/${featured.slug.current}`}
               className="group relative flex flex-col md:flex-row gap-0 bg-[#111111] overflow-hidden mb-px"
@@ -103,6 +105,7 @@ export default async function BlogPage() {
                 </div>
               </div>
             </Link>
+            </FadeIn>
           )}
 
           {/* Rest as rows */}
@@ -116,8 +119,8 @@ export default async function BlogPage() {
                   })
                 : null;
               return (
+                <FadeIn key={post._id} delay={0.05 * (rest.indexOf(post))}>
                 <Link
-                  key={post._id}
                   href={`/blog/${post.slug.current}`}
                   className="group flex items-start md:items-center justify-between py-7 gap-6"
                 >
@@ -164,6 +167,7 @@ export default async function BlogPage() {
                     />
                   </div>
                 </Link>
+                </FadeIn>
               );
             })}
           </div>

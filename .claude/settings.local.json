@@ -6,7 +6,10 @@
       "Bash(mkdir -p \"C:\\\\Users\\\\titan\\\\Desktop\\\\my_website\\\\app\\\\studio\\\\[[...tool]]\")",
       "Bash(mkdir -p \"C:\\\\Users\\\\titan\\\\Desktop\\\\my_website\\\\app\\\\\\(site\\)\\\\projects\\\\[slug]\")",
       "Bash(mkdir -p \"C:\\\\Users\\\\titan\\\\Desktop\\\\my_website\\\\app\\\\\\(site\\)\\\\blog\\\\[slug]\")",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ]
   }
 }

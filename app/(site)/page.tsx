@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getFeaturedProjects, getFeaturedPosts, getSiteSettings, urlFor } from "@/lib/sanity";
 import { ArrowUpRight } from "lucide-react";
+import { FadeIn } from "@/components/FadeIn";
 
 export const revalidate = 60;
 
@@ -36,39 +37,45 @@ export default async function HomePage() {
         />
 
         <div className="relative max-w-7xl mx-auto w-full">
-          <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.3em] uppercase text-[#6b6b6b] mb-8">
-            01 / {heroTagline}
-          </p>
-
-          <h1 className="font-[family-name:var(--font-syne)] font-800 text-[clamp(3.5rem,10vw,9rem)] leading-[0.9] tracking-[-0.02em] text-[#f0ede8] max-w-5xl">
-            {heroLine1}
-            <br />
-            <span className="text-[#c9956a]">{heroLine2}</span>
-            <br />
-            {heroLine3}
-          </h1>
-
-          <div className="mt-12 flex flex-col md:flex-row md:items-end gap-8 justify-between">
-            <p className="font-[family-name:var(--font-inter)] font-300 text-base leading-7 text-[#6b6b6b] max-w-md">
-              {heroSubtitle}
+          <FadeIn delay={0.1}>
+            <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.3em] uppercase text-[#6b6b6b] mb-8">
+              01 / {heroTagline}
             </p>
+          </FadeIn>
 
-            <div className="flex gap-6">
-              <Link
-                href="/projects"
-                className="group inline-flex items-center gap-2 font-[family-name:var(--font-syne)] text-sm tracking-[0.15em] uppercase text-[#f0ede8] border border-[#1e1e1e] px-6 py-3 hover:border-[#c9956a] hover:text-[#c9956a] transition-all duration-300"
-              >
-                {heroCTALabel}
-                <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </Link>
-              <Link
-                href="/about"
-                className="font-[family-name:var(--font-inter)] text-xs tracking-[0.15em] uppercase text-[#6b6b6b] hover:text-[#f0ede8] transition-colors self-center"
-              >
-                About
-              </Link>
+          <FadeIn delay={0.2}>
+            <h1 className="font-[family-name:var(--font-syne)] font-800 text-[clamp(3.5rem,10vw,9rem)] leading-[0.9] tracking-[-0.02em] text-[#f0ede8] max-w-5xl">
+              {heroLine1}
+              <br />
+              <span className="text-[#c9956a]">{heroLine2}</span>
+              <br />
+              {heroLine3}
+            </h1>
+          </FadeIn>
+
+          <FadeIn delay={0.35}>
+            <div className="mt-12 flex flex-col md:flex-row md:items-end gap-8 justify-between">
+              <p className="font-[family-name:var(--font-inter)] font-300 text-base leading-7 text-[#6b6b6b] max-w-md">
+                {heroSubtitle}
+              </p>
+
+              <div className="flex gap-6">
+                <Link
+                  href="/projects"
+                  className="group inline-flex items-center gap-2 font-[family-name:var(--font-syne)] text-sm tracking-[0.15em] uppercase text-[#f0ede8] border border-[#1e1e1e] px-6 py-3 hover:border-[#c9956a] hover:text-[#c9956a] transition-all duration-300"
+                >
+                  {heroCTALabel}
+                  <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </Link>
+                <Link
+                  href="/about"
+                  className="font-[family-name:var(--font-inter)] text-xs tracking-[0.15em] uppercase text-[#6b6b6b] hover:text-[#f0ede8] transition-colors self-center"
+                >
+                  About
+                </Link>
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
@@ -78,26 +85,30 @@ export default async function HomePage() {
 
       {/* ── Featured Projects ─────────────────────────────────────────────── */}
       <section className="px-6 md:px-10 py-24 max-w-7xl mx-auto">
-        <div className="flex items-end justify-between mb-14">
-          <div>
-            <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.3em] uppercase text-[#6b6b6b] mb-2">
-              02 / Selected Work
-            </p>
-            <h2 className="font-[family-name:var(--font-syne)] text-4xl md:text-5xl font-700 text-[#f0ede8]">
-              Projects
-            </h2>
+        <FadeIn>
+          <div className="flex items-end justify-between mb-14">
+            <div>
+              <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.3em] uppercase text-[#6b6b6b] mb-2">
+                02 / Selected Work
+              </p>
+              <h2 className="font-[family-name:var(--font-syne)] text-4xl md:text-5xl font-700 text-[#f0ede8]">
+                Projects
+              </h2>
+            </div>
+            <Link href="/projects" className="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase text-[#6b6b6b] hover:text-[#c9956a] transition-colors font-[family-name:var(--font-inter)]">
+              All Projects <ArrowUpRight size={12} />
+            </Link>
           </div>
-          <Link href="/projects" className="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase text-[#6b6b6b] hover:text-[#c9956a] transition-colors font-[family-name:var(--font-inter)]">
-            All Projects <ArrowUpRight size={12} />
-          </Link>
-        </div>
+        </FadeIn>
 
         {projects.length === 0 ? (
           <EmptyState />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#1e1e1e]">
             {projects.map((p: { _id: string; title: string; slug: { current: string }; coverImage?: unknown; category?: string; year?: string }, i: number) => (
-              <ProjectCard key={p._id} project={p} index={i} />
+              <FadeIn key={p._id} delay={i * 0.08}>
+                <ProjectCard project={p} index={i} />
+              </FadeIn>
             ))}
           </div>
         )}
@@ -116,26 +127,30 @@ export default async function HomePage() {
 
       {/* ── Latest Writing ────────────────────────────────────────────────── */}
       <section className="px-6 md:px-10 py-24 max-w-7xl mx-auto">
-        <div className="flex items-end justify-between mb-14">
-          <div>
-            <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.3em] uppercase text-[#6b6b6b] mb-2">
-              03 / Thoughts
-            </p>
-            <h2 className="font-[family-name:var(--font-syne)] text-4xl md:text-5xl font-700 text-[#f0ede8]">
-              Writing
-            </h2>
+        <FadeIn>
+          <div className="flex items-end justify-between mb-14">
+            <div>
+              <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.3em] uppercase text-[#6b6b6b] mb-2">
+                03 / Thoughts
+              </p>
+              <h2 className="font-[family-name:var(--font-syne)] text-4xl md:text-5xl font-700 text-[#f0ede8]">
+                Writing
+              </h2>
+            </div>
+            <Link href="/blog" className="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase text-[#6b6b6b] hover:text-[#c9956a] transition-colors font-[family-name:var(--font-inter)]">
+              All Posts <ArrowUpRight size={12} />
+            </Link>
           </div>
-          <Link href="/blog" className="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase text-[#6b6b6b] hover:text-[#c9956a] transition-colors font-[family-name:var(--font-inter)]">
-            All Posts <ArrowUpRight size={12} />
-          </Link>
-        </div>
+        </FadeIn>
 
         {posts.length === 0 ? (
           <EmptyState />
         ) : (
           <div className="flex flex-col divide-y divide-[#1e1e1e]">
-            {posts.map((post: { _id: string; title: string; slug: { current: string }; publishedAt?: string; category?: string; readTime?: number }) => (
-              <PostRow key={post._id} post={post} />
+            {posts.map((post: { _id: string; title: string; slug: { current: string }; publishedAt?: string; category?: string; readTime?: number }, i: number) => (
+              <FadeIn key={post._id} delay={i * 0.06}>
+                <PostRow post={post} />
+              </FadeIn>
             ))}
           </div>
         )}
