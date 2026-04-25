@@ -61,9 +61,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Message flagged as spam" }, { status: 400 });
   }
 
-  // Cloudflare Turnstile verification
-  if (TURNSTILE_SECRET) {
-    const valid = await verifyTurnstile(turnstileToken ?? "", ip);
+  // Cloudflare Turnstile verification — only runs when token was provided
+  if (TURNSTILE_SECRET && turnstileToken) {
+    const valid = await verifyTurnstile(turnstileToken, ip);
     if (!valid) {
       return NextResponse.json({ error: "Verification failed" }, { status: 403 });
     }
