@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Syne, Inter } from "next/font/google";
 import "./globals.css";
+import CustomCursor from "@/components/CustomCursor";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -59,7 +60,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://cdn.sanity.io" />
         <link rel="dns-prefetch" href="https://api.sanity.io" />
       </head>
-      <body>{children}</body>
+      <body>
+        <CustomCursor />
+        {children}
+      </body>
     </html>
   );
 }
