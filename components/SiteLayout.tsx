@@ -8,6 +8,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
   const settings = await getSiteSettings().catch(() => null);
   const siteName: string = settings?.siteName ?? "Studio";
   const footerTagline: string = settings?.footerTagline ?? "Architecture & Design";
+  const footerSubtitle: string | undefined = settings?.footerSubtitle;
   const email: string | undefined = settings?.email;
   const instagram: string | undefined = settings?.instagram;
   const linkedin: string | undefined = settings?.linkedin;
@@ -18,7 +19,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       <main>
         <PageTransition>{children}</PageTransition>
       </main>
-      <Footer tagline={footerTagline} email={email} instagram={instagram} linkedin={linkedin} />
+      <Footer tagline={footerTagline} subtitle={footerSubtitle} email={email} instagram={instagram} linkedin={linkedin} />
       <ScrollToTop />
     </>
   );

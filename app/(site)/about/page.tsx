@@ -23,6 +23,12 @@ export default async function AboutPage() {
   const basedIn: string = s?.basedIn ?? "Your City, Country";
   const email: string = s?.email ?? "hello@yourdomain.com";
   const photo = s?.aboutPhoto ?? null;
+  const stats: { number: string; label: string }[] = s?.stats ?? [
+    { number: "10+", label: "Years of practice" },
+    { number: "40+", label: "Projects delivered" },
+    { number: "3",   label: "Countries worked" },
+  ];
+  const aboutCTAHeadline: string = s?.aboutCTAHeadline ?? "Let's build something worth keeping.";
 
   return (
     <div className="pt-32 pb-24 px-6 md:px-10 max-w-7xl mx-auto">
@@ -52,11 +58,7 @@ export default async function AboutPage() {
             )}
 
             <div className="grid grid-cols-3 gap-6 pt-4 border-t border-[#1e1e1e]">
-              {[
-                { number: "10+", label: "Years of practice" },
-                { number: "40+", label: "Projects delivered" },
-                { number: "3", label: "Countries worked" },
-              ].map((stat) => (
+              {stats.map((stat) => (
                 <div key={stat.label}>
                   <p className="font-[family-name:var(--font-syne)] text-3xl md:text-4xl font-700 text-[#c9956a]">
                     {stat.number}
@@ -187,8 +189,7 @@ export default async function AboutPage() {
               Start a conversation
             </p>
             <h2 className="font-[family-name:var(--font-syne)] text-3xl md:text-5xl font-700 text-[#f0ede8] leading-tight">
-              Let&apos;s build something<br />
-              <span className="text-[#c9956a]">worth keeping.</span>
+              {aboutCTAHeadline}
             </h2>
           </div>
           <a

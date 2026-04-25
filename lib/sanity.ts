@@ -106,8 +106,9 @@ export function getSiteSettings() {
     `*[_type == "siteSettings"][0] {
       siteName, seoDescription, email, basedIn, availableFor, instagram, linkedin,
       heroLine1, heroLine2, heroLine3, heroSubtitle, heroCTALabel, heroTagline,
-      aboutPhoto, aboutHeadline, aboutBody, skills, timeline,
-      footerTagline, marqueeWords
+      aboutPhoto, aboutHeadline, aboutBody, stats, aboutCTAHeadline, skills, timeline,
+      contactIntro,
+      footerTagline, footerSubtitle, marqueeWords
     }`,
     {}, ["siteSettings"]
   );

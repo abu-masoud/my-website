@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 
 interface Props {
   tagline?: string;
+  subtitle?: string;
   email?: string;
   instagram?: string;
   linkedin?: string;
@@ -10,6 +11,7 @@ interface Props {
 
 export default function Footer({
   tagline = "Architecture & Design",
+  subtitle = "Designing spaces that endure.",
   email,
   instagram,
   linkedin,
@@ -31,7 +33,7 @@ export default function Footer({
               {tagline}
             </Link>
             <p className="font-[family-name:var(--font-inter)] text-xs text-[#333333]">
-              Designing spaces that endure.
+              {subtitle}
             </p>
           </div>
 

@@ -13,6 +13,7 @@ export default async function ContactPage() {
   const email: string = s?.email ?? "hello@yourdomain.com";
   const basedIn: string = s?.basedIn ?? "Your City, Country";
   const availableFor: string[] = s?.availableFor ?? ["New projects", "Consultations", "Collaborations"];
+  const contactIntro: string = s?.contactIntro ?? "Have a project in mind, a question, or just want to connect? I'd love to hear from you. I typically respond within 24 hours.";
 
   return (
     <div className="pt-32 pb-24 px-6 md:px-10 max-w-7xl mx-auto">
@@ -33,7 +34,7 @@ export default async function ContactPage() {
         <FadeIn delay={0.1}>
           <div className="space-y-10">
             <p className="font-[family-name:var(--font-inter)] font-300 text-base leading-8 text-[#6b6b6b]">
-              Have a project in mind, a question, or just want to connect? I&apos;d love to hear from you. I typically respond within 24 hours.
+              {contactIntro}
             </p>
 
             <div className="space-y-6 border-t border-[#1e1e1e] pt-8">
