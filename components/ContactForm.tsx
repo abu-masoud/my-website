@@ -4,7 +4,9 @@ import { useState, useRef, useEffect } from "react";
 import { Turnstile } from "@marsidev/react-turnstile";
 import { ArrowUpRight } from "lucide-react";
 
-const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
+const RAW_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
+// Only treat as valid if it looks like a real Cloudflare key (starts with "0x")
+const SITE_KEY = RAW_SITE_KEY.startsWith("0x") ? RAW_SITE_KEY : "";
 
 export default function ContactForm({ email }: { email: string }) {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");

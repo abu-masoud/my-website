@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Syne, Inter } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
+import SmoothScroll from "@/components/SmoothScroll";
+import PageLoader from "@/components/PageLoader";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -61,6 +63,8 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://api.sanity.io" />
       </head>
       <body>
+        <PageLoader />
+        <SmoothScroll />
         <CustomCursor />
         {children}
       </body>

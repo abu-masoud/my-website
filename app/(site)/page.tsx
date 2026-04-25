@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getFeaturedProjects, getFeaturedPosts, getSiteSettings, urlFor } from "@/lib/sanity";
 import { ArrowUpRight } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
+import AnimatedHero from "@/components/AnimatedHero";
 
 export const revalidate = 60;
 
@@ -26,62 +27,14 @@ export default async function HomePage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex flex-col justify-end px-6 md:px-10 pb-20 pt-32 overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "linear-gradient(#f0ede8 1px, transparent 1px), linear-gradient(90deg, #f0ede8 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
-          }}
-        />
-
-        <div className="relative max-w-7xl mx-auto w-full">
-          <FadeIn delay={0.1}>
-            <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.3em] uppercase text-[#6b6b6b] mb-8">
-              01 / {heroTagline}
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={0.2}>
-            <h1 className="font-[family-name:var(--font-syne)] font-800 text-[clamp(3.5rem,10vw,9rem)] leading-[0.9] tracking-[-0.02em] text-[#f0ede8] max-w-5xl">
-              {heroLine1}
-              <br />
-              <span className="text-[#c9956a]">{heroLine2}</span>
-              <br />
-              {heroLine3}
-            </h1>
-          </FadeIn>
-
-          <FadeIn delay={0.35}>
-            <div className="mt-12 flex flex-col md:flex-row md:items-end gap-8 justify-between">
-              <p className="font-[family-name:var(--font-inter)] font-300 text-base leading-7 text-[#6b6b6b] max-w-md">
-                {heroSubtitle}
-              </p>
-
-              <div className="flex gap-6">
-                <Link
-                  href="/projects"
-                  className="group inline-flex items-center gap-2 font-[family-name:var(--font-syne)] text-sm tracking-[0.15em] uppercase text-[#f0ede8] border border-[#1e1e1e] px-6 py-3 hover:border-[#c9956a] hover:text-[#c9956a] transition-all duration-300"
-                >
-                  {heroCTALabel}
-                  <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </Link>
-                <Link
-                  href="/about"
-                  className="font-[family-name:var(--font-inter)] text-xs tracking-[0.15em] uppercase text-[#6b6b6b] hover:text-[#f0ede8] transition-colors self-center"
-                >
-                  About
-                </Link>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <div className="w-px h-12 bg-gradient-to-b from-[#c9956a] to-transparent animate-pulse" />
-        </div>
-      </section>
+      <AnimatedHero
+        heroLine1={heroLine1}
+        heroLine2={heroLine2}
+        heroLine3={heroLine3}
+        heroSubtitle={heroSubtitle}
+        heroCTALabel={heroCTALabel}
+        heroTagline={heroTagline}
+      />
 
       {/* ── Featured Projects ─────────────────────────────────────────────── */}
       <section className="px-6 md:px-10 py-24 max-w-7xl mx-auto">
