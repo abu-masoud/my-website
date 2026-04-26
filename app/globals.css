@@ -59,6 +59,16 @@ body {
   to { transform: translateX(-50%); }
 }
 
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
 /* Noise texture overlay via pseudo-element on body */
 body::before {
   content: "";
