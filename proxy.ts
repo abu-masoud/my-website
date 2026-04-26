@@ -37,7 +37,7 @@ export function proxy(request: NextRequest) {
   const ua = request.headers.get("user-agent") ?? "";
 
   // 0 — Protect /studio behind password cookie
-  if (pathname.startsWith("/studio")) {
+  if (pathname.startsWith("/studio") && !pathname.startsWith("/studio-login")) {
     const cookie = request.cookies.get("studio_access");
     if (!cookie || cookie.value !== "1") {
       return NextResponse.redirect(new URL("/studio-login", request.url));
