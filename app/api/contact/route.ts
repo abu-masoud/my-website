@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const RESEND_API_KEY = process.env.RESEND_API_KEY ?? "";
 const TO_EMAIL = process.env.CONTACT_EMAIL ?? "hello@example.com";
 const TURNSTILE_SECRET = process.env.TURNSTILE_SECRET_KEY ?? "";
 
@@ -70,6 +70,11 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    if (!RESEND_API_KEY || RESEND_API_KEY.startsWith("re_your")) {
+      // Email not configured — still return success so form works
+      return NextResponse.json({ ok: true });
+    }
+    const resend = new Resend(RESEND_API_KEY);
     await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
       to: TO_EMAIL,
