@@ -68,12 +68,12 @@ export default async function PostPage({ params }: Props) {
         )}
         <div className="flex items-center gap-6 mt-6 border-t border-[#1e1e1e] pt-6">
           {date && (
-            <span className="font-[family-name:var(--font-inter)] text-xs text-[#333333]">
+            <span className="font-[family-name:var(--font-inter)] text-xs text-[#6b6b6b]">
               {date}
             </span>
           )}
           {post.readTime && (
-            <span className="font-[family-name:var(--font-inter)] text-xs text-[#333333]">
+            <span className="font-[family-name:var(--font-inter)] text-xs text-[#6b6b6b]">
               {post.readTime} min read
             </span>
           )}

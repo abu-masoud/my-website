@@ -33,7 +33,7 @@ export default function PageLoader() {
         >
           {/* Counter line */}
           <motion.p
-            className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.4em] uppercase text-[#333333] mb-8"
+            className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.4em] uppercase text-[#6b6b6b] mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.1 }}

@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-[#0c0c0c] flex flex-col items-center justify-center px-6 text-center">
-      <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.4em] uppercase text-[#333333] mb-6">
+      <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.4em] uppercase text-[#6b6b6b] mb-6">
         404
       </p>
       <h1 className="font-[family-name:var(--font-syne)] text-7xl md:text-[10rem] font-800 text-[#f0ede8] leading-none mb-4">

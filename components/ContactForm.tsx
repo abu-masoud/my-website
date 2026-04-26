@@ -79,53 +79,53 @@ export default function ContactForm({ email }: { email: string }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#333333] mb-2">
+          <label className="block font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#6b6b6b] mb-2">
             Name
           </label>
           <input
             name="name"
             type="text"
             placeholder="Your name"
-            className={`w-full bg-transparent border px-4 py-3 text-sm font-[family-name:var(--font-inter)] text-[#f0ede8] placeholder:text-[#2a2a2a] focus:outline-none transition-colors ${errors.name ? "border-red-800" : "border-[#1e1e1e] focus:border-[#c9956a]"}`}
+            className={`w-full bg-transparent border px-4 py-3 text-sm font-[family-name:var(--font-inter)] text-[#f0ede8] placeholder:text-[#4a4a4a] focus:outline-none transition-colors ${errors.name ? "border-red-800" : "border-[#1e1e1e] focus:border-[#c9956a]"}`}
           />
           {errors.name && <p className="mt-1 text-xs text-red-700">{errors.name}</p>}
         </div>
 
         <div>
-          <label className="block font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#333333] mb-2">
+          <label className="block font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#6b6b6b] mb-2">
             Email
           </label>
           <input
             name="email"
             type="email"
             placeholder="your@email.com"
-            className={`w-full bg-transparent border px-4 py-3 text-sm font-[family-name:var(--font-inter)] text-[#f0ede8] placeholder:text-[#2a2a2a] focus:outline-none transition-colors ${errors.email ? "border-red-800" : "border-[#1e1e1e] focus:border-[#c9956a]"}`}
+            className={`w-full bg-transparent border px-4 py-3 text-sm font-[family-name:var(--font-inter)] text-[#f0ede8] placeholder:text-[#4a4a4a] focus:outline-none transition-colors ${errors.email ? "border-red-800" : "border-[#1e1e1e] focus:border-[#c9956a]"}`}
           />
           {errors.email && <p className="mt-1 text-xs text-red-700">{errors.email}</p>}
         </div>
       </div>
 
       <div>
-        <label className="block font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#333333] mb-2">
+        <label className="block font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#6b6b6b] mb-2">
           Subject
         </label>
         <input
           name="subject"
           type="text"
           placeholder="Project brief, collaboration, consultation..."
-          className="w-full bg-transparent border border-[#1e1e1e] focus:border-[#c9956a] px-4 py-3 text-sm font-[family-name:var(--font-inter)] text-[#f0ede8] placeholder:text-[#2a2a2a] focus:outline-none transition-colors"
+          className="w-full bg-transparent border border-[#1e1e1e] focus:border-[#c9956a] px-4 py-3 text-sm font-[family-name:var(--font-inter)] text-[#f0ede8] placeholder:text-[#4a4a4a] focus:outline-none transition-colors"
         />
       </div>
 
       <div>
-        <label className="block font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#333333] mb-2">
+        <label className="block font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#6b6b6b] mb-2">
           Message
         </label>
         <textarea
           name="message"
           rows={6}
           placeholder="Tell me about your project or idea..."
-          className={`w-full bg-transparent border px-4 py-3 text-sm font-[family-name:var(--font-inter)] text-[#f0ede8] placeholder:text-[#2a2a2a] focus:outline-none transition-colors resize-none ${errors.message ? "border-red-800" : "border-[#1e1e1e] focus:border-[#c9956a]"}`}
+          className={`w-full bg-transparent border px-4 py-3 text-sm font-[family-name:var(--font-inter)] text-[#f0ede8] placeholder:text-[#4a4a4a] focus:outline-none transition-colors resize-none ${errors.message ? "border-red-800" : "border-[#1e1e1e] focus:border-[#c9956a]"}`}
         />
         {errors.message && <p className="mt-1 text-xs text-red-700">{errors.message}</p>}
       </div>

@@ -85,7 +85,7 @@ export default function GalleryLightbox({ images }: Props) {
           </button>
 
           {/* Counter */}
-          <p className="absolute top-6 left-1/2 -translate-x-1/2 font-[family-name:var(--font-inter)] text-xs tracking-[0.3em] text-[#333333]">
+          <p className="absolute top-6 left-1/2 -translate-x-1/2 font-[family-name:var(--font-inter)] text-xs tracking-[0.3em] text-[#6b6b6b]">
             {String(index + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
           </p>
 

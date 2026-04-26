@@ -111,7 +111,7 @@ export default async function ProjectPage({ params }: Props) {
               <div className="flex flex-col gap-5">
                 {meta.map((m) => (
                   <div key={m.label}>
-                    <p className="font-[family-name:var(--font-inter)] text-[9px] tracking-[0.3em] uppercase text-[#333333] mb-1">
+                    <p className="font-[family-name:var(--font-inter)] text-[9px] tracking-[0.3em] uppercase text-[#6b6b6b] mb-1">
                       {m.label}
                     </p>
                     <p className="font-[family-name:var(--font-syne)] text-sm text-[#f0ede8]">
@@ -158,7 +158,7 @@ export default async function ProjectPage({ params }: Props) {
 
             {/* Empty state if no body and no gallery */}
             {!project.body && galleryImages.length === 0 && (
-              <p className="font-[family-name:var(--font-inter)] text-sm text-[#333333] italic">
+              <p className="font-[family-name:var(--font-inter)] text-sm text-[#6b6b6b] italic">
                 No content added yet.
               </p>
             )}

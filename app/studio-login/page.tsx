@@ -45,7 +45,7 @@ export default function StudioLogin() {
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="bg-[#111111] border border-[#1e1e1e] text-[#f0ede8] px-4 py-3 text-sm font-[family-name:var(--font-inter)] focus:outline-none focus:border-[#c9956a] transition-colors placeholder:text-[#333333]"
+            className="bg-[#111111] border border-[#1e1e1e] text-[#f0ede8] px-4 py-3 text-sm font-[family-name:var(--font-inter)] focus:outline-none focus:border-[#c9956a] transition-colors placeholder:text-[#6b6b6b]"
             autoFocus
           />
           {error && (

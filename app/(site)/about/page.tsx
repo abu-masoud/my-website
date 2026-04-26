@@ -63,7 +63,7 @@ export default async function AboutPage() {
                   <p className="font-[family-name:var(--font-syne)] text-3xl md:text-4xl font-700 text-[#c9956a]">
                     {stat.number}
                   </p>
-                  <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.1em] uppercase text-[#333333] mt-1">
+                  <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.1em] uppercase text-[#6b6b6b] mt-1">
                     {stat.label}
                   </p>
                 </div>
@@ -105,9 +105,9 @@ export default async function AboutPage() {
               ) : (
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
                   <div className="w-16 h-16 rounded-full bg-[#1e1e1e] flex items-center justify-center">
-                    <span className="font-[family-name:var(--font-syne)] text-xl text-[#333333]">R</span>
+                    <span className="font-[family-name:var(--font-syne)] text-xl text-[#6b6b6b]">R</span>
                   </div>
-                  <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.2em] uppercase text-[#2a2a2a]">
+                  <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.2em] uppercase text-[#4a4a4a]">
                     Add photo in Studio
                   </p>
                 </div>
@@ -118,11 +118,11 @@ export default async function AboutPage() {
             {/* Contact info card */}
             <div className="border border-[#1e1e1e] p-6 space-y-5">
               <div>
-                <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.3em] uppercase text-[#333333] mb-1.5">Based In</p>
+                <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.3em] uppercase text-[#6b6b6b] mb-1.5">Based In</p>
                 <p className="font-[family-name:var(--font-syne)] text-sm text-[#f0ede8]">{basedIn}</p>
               </div>
               <div>
-                <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.3em] uppercase text-[#333333] mb-1.5">Available For</p>
+                <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.3em] uppercase text-[#6b6b6b] mb-1.5">Available For</p>
                 <ul className="space-y-1">
                   {availableFor.map((item: string) => (
                     <li key={item} className="font-[family-name:var(--font-inter)] text-sm text-[#6b6b6b] flex items-center gap-2 before:content-['—'] before:text-[#c9956a] before:text-xs">{item}</li>
@@ -130,7 +130,7 @@ export default async function AboutPage() {
                 </ul>
               </div>
               <div>
-                <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.3em] uppercase text-[#333333] mb-1.5">Email</p>
+                <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.3em] uppercase text-[#6b6b6b] mb-1.5">Email</p>
                 <a href={`mailto:${email}`} className="font-[family-name:var(--font-syne)] text-sm text-[#c9956a] hover:text-[#e0b48a] transition-colors">
                   {email}
                 </a>
@@ -169,7 +169,7 @@ export default async function AboutPage() {
           {timeline.map((item: { year: string; role: string; place: string; description: string }, i: number) => (
             <FadeIn key={item.year + item.role} delay={i * 0.1}>
               <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 py-10">
-                <p className="font-[family-name:var(--font-inter)] text-xs text-[#333333] pt-1">{item.year}</p>
+                <p className="font-[family-name:var(--font-inter)] text-xs text-[#6b6b6b] pt-1">{item.year}</p>
                 <div>
                   <p className="font-[family-name:var(--font-syne)] text-lg font-600 text-[#f0ede8] mb-1">{item.role}</p>
                   <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.15em] uppercase text-[#c9956a] mb-3">{item.place}</p>

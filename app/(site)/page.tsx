@@ -55,7 +55,7 @@ export default async function HomePage() {
                 <span className="font-[family-name:var(--font-syne)] text-3xl md:text-4xl font-800 text-[#f0ede8]">
                   {s.value}
                 </span>
-                <span className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.2em] uppercase text-[#333333]">
+                <span className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.2em] uppercase text-[#6b6b6b]">
                   {s.label}
                 </span>
               </div>
@@ -119,7 +119,7 @@ export default async function HomePage() {
       <div className="border-y border-[#1e1e1e] overflow-hidden py-5">
         <div className="animate-marquee">
           {marqueeWords.map((word: string, i: number) => (
-            <span key={i} className="font-[family-name:var(--font-syne)] text-xs tracking-[0.3em] uppercase text-[#2a2a2a] mx-8 shrink-0">
+            <span key={i} className="font-[family-name:var(--font-syne)] text-xs tracking-[0.3em] uppercase text-[#4a4a4a] mx-8 shrink-0">
               {word}
             </span>
           ))}
@@ -158,19 +158,19 @@ export default async function HomePage() {
           <FadeIn delay={0.15}>
             <div className="flex flex-col gap-4">
               <div className="flex justify-between items-center py-5 border-b border-[#1e1e1e]">
-                <span className="font-[family-name:var(--font-inter)] text-xs tracking-[0.2em] uppercase text-[#333333]">Based in</span>
+                <span className="font-[family-name:var(--font-inter)] text-xs tracking-[0.2em] uppercase text-[#6b6b6b]">Based in</span>
                 <span className="font-[family-name:var(--font-syne)] text-sm text-[#f0ede8]">{basedIn}</span>
               </div>
               <div className="flex justify-between items-center py-5 border-b border-[#1e1e1e]">
-                <span className="font-[family-name:var(--font-inter)] text-xs tracking-[0.2em] uppercase text-[#333333]">Available for</span>
+                <span className="font-[family-name:var(--font-inter)] text-xs tracking-[0.2em] uppercase text-[#6b6b6b]">Available for</span>
                 <span className="font-[family-name:var(--font-syne)] text-sm text-[#f0ede8]">{availableFor}</span>
               </div>
               <div className="flex justify-between items-center py-5 border-b border-[#1e1e1e]">
-                <span className="font-[family-name:var(--font-inter)] text-xs tracking-[0.2em] uppercase text-[#333333]">Speciality</span>
+                <span className="font-[family-name:var(--font-inter)] text-xs tracking-[0.2em] uppercase text-[#6b6b6b]">Speciality</span>
                 <span className="font-[family-name:var(--font-syne)] text-sm text-[#f0ede8]">Architecture & Design</span>
               </div>
               <div className="flex justify-between items-center py-5 border-b border-[#1e1e1e]">
-                <span className="font-[family-name:var(--font-inter)] text-xs tracking-[0.2em] uppercase text-[#333333]">Focus</span>
+                <span className="font-[family-name:var(--font-inter)] text-xs tracking-[0.2em] uppercase text-[#6b6b6b]">Focus</span>
                 <span className="font-[family-name:var(--font-syne)] text-sm text-[#f0ede8]">Residential & Urban</span>
               </div>
             </div>
@@ -189,7 +189,7 @@ export default async function HomePage() {
           {DISCIPLINES.map((d, i) => (
             <FadeIn key={d.title} delay={i * 0.07}>
               <div className="group bg-[#0c0c0c] px-8 py-10 hover:bg-[#111111] transition-colors cursor-default">
-                <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#333333] mb-4">
+                <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#6b6b6b] mb-4">
                   {String(i + 1).padStart(2, "0")}
                 </p>
                 <h3 className="font-[family-name:var(--font-syne)] text-xl font-700 text-[#f0ede8] group-hover:text-[#c9956a] transition-colors mb-3">
@@ -239,7 +239,7 @@ export default async function HomePage() {
       <FadeIn>
         <section className="border-t border-[#1e1e1e] px-6 md:px-10 py-32">
           <div className="max-w-7xl mx-auto flex flex-col items-center text-center gap-10">
-            <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.3em] uppercase text-[#333333]">
+            <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.3em] uppercase text-[#6b6b6b]">
               06 / Let&apos;s build together
             </p>
             <h2 className="font-[family-name:var(--font-syne)] font-800 text-[clamp(2.5rem,8vw,7rem)] leading-[0.92] tracking-[-0.02em] text-[#f0ede8]">
@@ -412,9 +412,9 @@ function PostRow({ post }: { post: PostType }) {
           <span className="hidden md:block font-[family-name:var(--font-inter)] text-xs text-[#6b6b6b]">{date}</span>
         )}
         {post.readTime && (
-          <span className="font-[family-name:var(--font-inter)] text-xs text-[#333333]">{post.readTime} min</span>
+          <span className="font-[family-name:var(--font-inter)] text-xs text-[#6b6b6b]">{post.readTime} min</span>
         )}
-        <ArrowUpRight size={14} className="text-[#333333] group-hover:text-[#c9956a] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+        <ArrowUpRight size={14} className="text-[#6b6b6b] group-hover:text-[#c9956a] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
       </div>
     </Link>
   );
@@ -423,7 +423,7 @@ function PostRow({ post }: { post: PostType }) {
 function EmptyState() {
   return (
     <div className="border border-dashed border-[#1e1e1e] p-12 text-center">
-      <p className="font-[family-name:var(--font-inter)] text-sm text-[#333333]">Coming soon</p>
+      <p className="font-[family-name:var(--font-inter)] text-sm text-[#6b6b6b]">Coming soon</p>
     </div>
   );
 }

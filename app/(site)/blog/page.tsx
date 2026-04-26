@@ -38,7 +38,7 @@ export default async function BlogPage() {
 
       {posts.length === 0 ? (
         <div className="border border-dashed border-[#1e1e1e] p-20 text-center">
-          <p className="font-[family-name:var(--font-inter)] text-sm text-[#333333]">
+          <p className="font-[family-name:var(--font-inter)] text-sm text-[#6b6b6b]">
             Coming soon
           </p>
         </div>
@@ -84,7 +84,7 @@ export default async function BlogPage() {
                 <div className="flex items-center justify-between mt-8">
                   <div className="flex gap-4">
                     {featured.publishedAt && (
-                      <span className="font-[family-name:var(--font-inter)] text-xs text-[#333333]">
+                      <span className="font-[family-name:var(--font-inter)] text-xs text-[#6b6b6b]">
                         {new Date(featured.publishedAt).toLocaleDateString("en-GB", {
                           day: "2-digit",
                           month: "short",
@@ -93,14 +93,14 @@ export default async function BlogPage() {
                       </span>
                     )}
                     {featured.readTime && (
-                      <span className="font-[family-name:var(--font-inter)] text-xs text-[#333333]">
+                      <span className="font-[family-name:var(--font-inter)] text-xs text-[#6b6b6b]">
                         {featured.readTime} min read
                       </span>
                     )}
                   </div>
                   <ArrowUpRight
                     size={16}
-                    className="text-[#333333] group-hover:text-[#c9956a] transition-colors"
+                    className="text-[#6b6b6b] group-hover:text-[#c9956a] transition-colors"
                   />
                 </div>
               </div>
@@ -152,18 +152,18 @@ export default async function BlogPage() {
                   </div>
                   <div className="flex items-center gap-6 shrink-0">
                     {date && (
-                      <span className="hidden md:block font-[family-name:var(--font-inter)] text-xs text-[#333333]">
+                      <span className="hidden md:block font-[family-name:var(--font-inter)] text-xs text-[#6b6b6b]">
                         {date}
                       </span>
                     )}
                     {post.readTime && (
-                      <span className="font-[family-name:var(--font-inter)] text-xs text-[#333333]">
+                      <span className="font-[family-name:var(--font-inter)] text-xs text-[#6b6b6b]">
                         {post.readTime}m
                       </span>
                     )}
                     <ArrowUpRight
                       size={14}
-                      className="text-[#333333] group-hover:text-[#c9956a] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                      className="text-[#6b6b6b] group-hover:text-[#c9956a] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
                     />
                   </div>
                 </Link>

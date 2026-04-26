@@ -59,7 +59,7 @@ export default async function ProjectsPage() {
 
       {projects.length === 0 ? (
         <div className="border border-dashed border-[#1e1e1e] p-20 text-center">
-          <p className="font-[family-name:var(--font-inter)] text-sm text-[#333333]">
+          <p className="font-[family-name:var(--font-inter)] text-sm text-[#6b6b6b]">
             Coming soon
           </p>
         </div>
@@ -89,7 +89,7 @@ export default async function ProjectsPage() {
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] via-transparent to-transparent" />
 
-              <span className="absolute top-5 left-5 font-[family-name:var(--font-syne)] text-xs tracking-[0.2em] text-[#333333]">
+              <span className="absolute top-5 left-5 font-[family-name:var(--font-syne)] text-xs tracking-[0.2em] text-[#6b6b6b]">
                 {String(i + 1).padStart(2, "0")}
               </span>
 

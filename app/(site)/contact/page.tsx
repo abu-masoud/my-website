@@ -41,7 +41,7 @@ export default async function ContactPage() {
               <div className="flex items-start gap-3">
                 <Mail size={14} className="text-[#c9956a] mt-0.5 shrink-0" />
                 <div>
-                  <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#333333] mb-1">Email</p>
+                  <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#6b6b6b] mb-1">Email</p>
                   <a
                     href={`mailto:${email}`}
                     className="font-[family-name:var(--font-syne)] text-sm text-[#f0ede8] hover:text-[#c9956a] transition-colors"
@@ -54,14 +54,14 @@ export default async function ContactPage() {
               <div className="flex items-start gap-3">
                 <MapPin size={14} className="text-[#c9956a] mt-0.5 shrink-0" />
                 <div>
-                  <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#333333] mb-1">Location</p>
+                  <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#6b6b6b] mb-1">Location</p>
                   <p className="font-[family-name:var(--font-syne)] text-sm text-[#f0ede8]">{basedIn}</p>
                 </div>
               </div>
             </div>
 
             <div className="border-t border-[#1e1e1e] pt-8">
-              <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#333333] mb-4">Available For</p>
+              <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#6b6b6b] mb-4">Available For</p>
               <ul className="space-y-2">
                 {availableFor.map((item) => (
                   <li key={item} className="flex items-center gap-3 font-[family-name:var(--font-inter)] text-sm text-[#6b6b6b]">
@@ -73,7 +73,7 @@ export default async function ContactPage() {
             </div>
 
             <div className="border-t border-[#1e1e1e] pt-8">
-              <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#333333] mb-4">Prefer email?</p>
+              <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#6b6b6b] mb-4">Prefer email?</p>
               <a
                 href={`mailto:${email}?subject=Project%20Inquiry`}
                 className="group inline-flex items-center gap-2 font-[family-name:var(--font-syne)] text-xs tracking-[0.2em] uppercase text-[#6b6b6b] border border-[#1e1e1e] px-5 py-3 hover:border-[#c9956a] hover:text-[#c9956a] transition-all"

@@ -32,7 +32,7 @@ export default function Footer({
             >
               {tagline}
             </Link>
-            <p className="font-[family-name:var(--font-inter)] text-xs text-[#333333] leading-6 max-w-xs mb-8">
+            <p className="font-[family-name:var(--font-inter)] text-xs text-[#6b6b6b] leading-6 max-w-xs mb-8">
               {subtitle}
             </p>
             {email && (
@@ -48,7 +48,7 @@ export default function Footer({
 
           {/* Navigation */}
           <div className="md:col-span-2 md:col-start-6">
-            <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#333333] mb-6">
+            <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#6b6b6b] mb-6">
               Navigate
             </p>
             <ul className="flex flex-col gap-3">
@@ -73,7 +73,7 @@ export default function Footer({
 
           {/* Disciplines */}
           <div className="md:col-span-2">
-            <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#333333] mb-6">
+            <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#6b6b6b] mb-6">
               Disciplines
             </p>
             <ul className="flex flex-col gap-3">
@@ -86,7 +86,7 @@ export default function Footer({
                 "Research & Theory",
               ].map((d) => (
                 <li key={d}>
-                  <span className="font-[family-name:var(--font-syne)] text-sm text-[#333333]">
+                  <span className="font-[family-name:var(--font-syne)] text-sm text-[#6b6b6b]">
                     {d}
                   </span>
                 </li>
@@ -96,7 +96,7 @@ export default function Footer({
 
           {/* Social + availability */}
           <div className="md:col-span-2">
-            <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#333333] mb-6">
+            <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#6b6b6b] mb-6">
               Connect
             </p>
             <ul className="flex flex-col gap-3">
@@ -141,7 +141,7 @@ export default function Footer({
 
             <div className="mt-8 inline-flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80] animate-pulse" />
-              <span className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.15em] uppercase text-[#333333]">
+              <span className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.15em] uppercase text-[#6b6b6b]">
                 Available for work
               </span>
             </div>
@@ -151,10 +151,10 @@ export default function Footer({
 
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-8">
-          <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.1em] text-[#1e1e1e]">
+          <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.1em] text-[#6b6b6b]">
             © {year} {tagline}. All rights reserved.
           </p>
-          <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.1em] text-[#1e1e1e]">
+          <p className="font-[family-name:var(--font-inter)] text-xs tracking-[0.1em] text-[#6b6b6b]">
             Designed & built with precision
           </p>
         </div>
