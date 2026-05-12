@@ -8,11 +8,18 @@ const RAW_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 // Only treat as valid if it looks like a real Cloudflare key (starts with "0x")
 const SITE_KEY = RAW_SITE_KEY.startsWith("0x") ? RAW_SITE_KEY : "";
 
+function safeMailto(email: string): string | null {
+  const cleanEmail = email.replace(/[\r\n]/g, "").trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail)) return null;
+  return `mailto:${cleanEmail}`;
+}
+
 export default function ContactForm({ email }: { email: string }) {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [turnstileToken, setTurnstileToken] = useState<string>("");
-  const loadedAt = useRef<number>(Date.now());
+  const loadedAt = useRef<number>(0);
+  const emailHref = safeMailto(email);
 
   useEffect(() => {
     loadedAt.current = Date.now();
@@ -27,7 +34,7 @@ export default function ContactForm({ email }: { email: string }) {
     if (data.get("_honey")) return;
 
     // Time gate
-    if (Date.now() - loadedAt.current < 3000) return;
+    if (!loadedAt.current || Date.now() - loadedAt.current < 3000) return;
 
     const name = (data.get("name") as string).trim();
     const userEmail = (data.get("email") as string).trim();
@@ -144,7 +151,7 @@ export default function ContactForm({ email }: { email: string }) {
       {status === "error" && (
         <p className="font-[family-name:var(--font-inter)] text-xs text-red-700">
           Something went wrong — try emailing directly at{" "}
-          <a href={`mailto:${email}`} className="underline">{email}</a>
+          {emailHref ? <a href={emailHref} className="underline">{email}</a> : email}
         </p>
       )}
 

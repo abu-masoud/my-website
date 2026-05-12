@@ -9,15 +9,20 @@ export default function PageLoader() {
     if (typeof sessionStorage === "undefined") return;
     const seen = sessionStorage.getItem("loader_seen");
     if (!seen) {
-      setVisible(true);
-      // Lock scroll while loader is present
-      document.documentElement.style.overflow = "hidden";
-      const timer = setTimeout(() => {
+      const showTimer = setTimeout(() => {
+        setVisible(true);
+        document.documentElement.style.overflow = "hidden";
+      }, 0);
+      const hideTimer = setTimeout(() => {
         setVisible(false);
         document.documentElement.style.overflow = "";
         sessionStorage.setItem("loader_seen", "1");
       }, 2200);
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(showTimer);
+        clearTimeout(hideTimer);
+        document.documentElement.style.overflow = "";
+      };
     }
   }, []);
 

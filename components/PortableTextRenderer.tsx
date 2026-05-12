@@ -1,6 +1,7 @@
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { urlFor } from "@/lib/sanity";
+import { safeExternalUrl } from "@/lib/security";
 
 const components = {
   types: {
@@ -58,16 +59,23 @@ const components = {
     }: {
       value?: { href: string };
       children?: React.ReactNode;
-    }) => (
-      <a
-        href={value?.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-[#c9956a] underline underline-offset-4 hover:text-[#e0b48a] transition-colors"
-      >
-        {children}
-      </a>
-    ),
+    }) => {
+      const href = safeExternalUrl(value?.href);
+      if (!href) return <>{children}</>;
+
+      const external = !href.startsWith("/");
+
+      return (
+        <a
+          href={href}
+          target={external ? "_blank" : undefined}
+          rel={external ? "noopener noreferrer" : undefined}
+          className="text-[#c9956a] underline underline-offset-4 hover:text-[#e0b48a] transition-colors"
+        >
+          {children}
+        </a>
+      );
+    },
   },
 };
 

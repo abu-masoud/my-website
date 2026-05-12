@@ -3,6 +3,7 @@ import ContactForm from "@/components/ContactForm";
 import { FadeIn } from "@/components/FadeIn";
 import { ArrowUpRight, Mail, MapPin } from "lucide-react";
 import type { Metadata } from "next";
+import { safeMailto } from "@/lib/security";
 
 export const metadata: Metadata = { title: "Contact" };
 export const revalidate = 60;
@@ -11,6 +12,8 @@ export default async function ContactPage() {
   const s = await getSiteSettings().catch(() => null);
 
   const email: string = s?.email ?? "hello@yourdomain.com";
+  const mailto = safeMailto(email);
+  const inquiryMailto = safeMailto(email, "Project Inquiry");
   const basedIn: string = s?.basedIn ?? "Your City, Country";
   const availableFor: string[] = s?.availableFor ?? ["New projects", "Consultations", "Collaborations"];
   const contactIntro: string = s?.contactIntro ?? "Have a project in mind, a question, or just want to connect? I'd love to hear from you. I typically respond within 24 hours.";
@@ -42,12 +45,16 @@ export default async function ContactPage() {
                 <Mail size={14} className="text-[#c9956a] mt-0.5 shrink-0" />
                 <div>
                   <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#6b6b6b] mb-1">Email</p>
-                  <a
-                    href={`mailto:${email}`}
-                    className="font-[family-name:var(--font-syne)] text-sm text-[#f0ede8] hover:text-[#c9956a] transition-colors"
-                  >
-                    {email}
-                  </a>
+                  {mailto ? (
+                    <a
+                      href={mailto}
+                      className="font-[family-name:var(--font-syne)] text-sm text-[#f0ede8] hover:text-[#c9956a] transition-colors"
+                    >
+                      {email}
+                    </a>
+                  ) : (
+                    <p className="font-[family-name:var(--font-syne)] text-sm text-[#f0ede8]">{email}</p>
+                  )}
                 </div>
               </div>
 
@@ -74,13 +81,15 @@ export default async function ContactPage() {
 
             <div className="border-t border-[#1e1e1e] pt-8">
               <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.25em] uppercase text-[#6b6b6b] mb-4">Prefer email?</p>
-              <a
-                href={`mailto:${email}?subject=Project%20Inquiry`}
-                className="group inline-flex items-center gap-2 font-[family-name:var(--font-syne)] text-xs tracking-[0.2em] uppercase text-[#6b6b6b] border border-[#1e1e1e] px-5 py-3 hover:border-[#c9956a] hover:text-[#c9956a] transition-all"
-              >
-                Open Email App
-                <ArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
+              {inquiryMailto && (
+                <a
+                  href={inquiryMailto}
+                  className="group inline-flex items-center gap-2 font-[family-name:var(--font-syne)] text-xs tracking-[0.2em] uppercase text-[#6b6b6b] border border-[#1e1e1e] px-5 py-3 hover:border-[#c9956a] hover:text-[#c9956a] transition-all"
+                >
+                  Open Email App
+                  <ArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+              )}
             </div>
           </div>
         </FadeIn>

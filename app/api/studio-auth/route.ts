@@ -1,23 +1,34 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { createStudioToken, STUDIO_COOKIE, STUDIO_COOKIE_MAX_AGE } from "@/lib/studioAuth";
+import { secureCompare } from "@/lib/security";
 
-const PASSWORD = process.env.STUDIO_PASSWORD!;
-const COOKIE   = "studio_access";
-const MAX_AGE  = 60 * 60 * 24 * 7; // 7 days
+const MAX_PASSWORD_LENGTH = 256;
 
 export async function POST(req: NextRequest) {
-  const { password } = await req.json();
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+  }
 
-  if (!password || password !== PASSWORD) {
+  const password =
+    body && typeof body === "object" && "password" in body
+      ? String(body.password).slice(0, MAX_PASSWORD_LENGTH)
+      : "";
+  const configuredPassword = process.env.STUDIO_PASSWORD;
+
+  if (!secureCompare(password, configuredPassword)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const cookieStore = await cookies();
-  cookieStore.set(COOKIE, "1", {
+  cookieStore.set(STUDIO_COOKIE, createStudioToken(), {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
-    maxAge: MAX_AGE,
+    maxAge: STUDIO_COOKIE_MAX_AGE,
     path: "/",
   });
 
@@ -26,6 +37,6 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE() {
   const cookieStore = await cookies();
-  cookieStore.delete(COOKIE);
+  cookieStore.delete(STUDIO_COOKIE);
   return NextResponse.json({ ok: true });
 }

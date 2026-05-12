@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { safeExternalUrl, safeMailto } from "@/lib/security";
 
 interface Props {
   tagline?: string;
@@ -17,6 +18,9 @@ export default function Footer({
   linkedin,
 }: Props) {
   const year = new Date().getFullYear();
+  const mailto = safeMailto(email);
+  const instagramHref = safeExternalUrl(instagram);
+  const linkedinHref = safeExternalUrl(linkedin);
 
   return (
     <footer className="border-t border-[#1e1e1e] mt-0">
@@ -35,9 +39,9 @@ export default function Footer({
             <p className="font-[family-name:var(--font-inter)] text-xs text-[#6b6b6b] leading-6 max-w-xs mb-8">
               {subtitle}
             </p>
-            {email && (
+            {email && mailto && (
               <a
-                href={`mailto:${email}`}
+                href={mailto}
                 className="group inline-flex items-center gap-2 font-[family-name:var(--font-inter)] text-xs tracking-[0.1em] text-[#6b6b6b] hover:text-[#c9956a] transition-colors"
               >
                 {email}
@@ -100,10 +104,10 @@ export default function Footer({
               Connect
             </p>
             <ul className="flex flex-col gap-3">
-              {instagram && (
+              {instagramHref && (
                 <li>
                   <a
-                    href={instagram}
+                    href={instagramHref}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-1 font-[family-name:var(--font-syne)] text-sm text-[#6b6b6b] hover:text-[#f0ede8] transition-colors"
@@ -113,10 +117,10 @@ export default function Footer({
                   </a>
                 </li>
               )}
-              {linkedin && (
+              {linkedinHref && (
                 <li>
                   <a
-                    href={linkedin}
+                    href={linkedinHref}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-1 font-[family-name:var(--font-syne)] text-sm text-[#6b6b6b] hover:text-[#f0ede8] transition-colors"
@@ -126,10 +130,10 @@ export default function Footer({
                   </a>
                 </li>
               )}
-              {email && (
+              {email && mailto && (
                 <li>
                   <a
-                    href={`mailto:${email}`}
+                    href={mailto}
                     className="group inline-flex items-center gap-1 font-[family-name:var(--font-syne)] text-sm text-[#6b6b6b] hover:text-[#f0ede8] transition-colors"
                   >
                     Email

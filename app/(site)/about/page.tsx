@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { getSiteSettings, urlFor } from "@/lib/sanity";
+import { safeMailto } from "@/lib/security";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
 import { FadeIn } from "@/components/FadeIn";
 import type { Metadata } from "next";
@@ -22,6 +23,7 @@ export default async function AboutPage() {
   const availableFor: string[] = s?.availableFor ?? ["New projects", "Consultations", "Collaborations"];
   const basedIn: string = s?.basedIn ?? "Your City, Country";
   const email: string = s?.email ?? "hello@yourdomain.com";
+  const mailto = safeMailto(email);
   const photo = s?.aboutPhoto ?? null;
   const stats: { number: string; label: string }[] = s?.stats ?? [
     { number: "10+", label: "Years of practice" },
@@ -78,13 +80,15 @@ export default async function AboutPage() {
                 View Projects
                 <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
-              <a
-                href={`mailto:${email}`}
-                className="group inline-flex items-center gap-2 font-[family-name:var(--font-syne)] text-xs tracking-[0.15em] uppercase text-[#6b6b6b] border border-[#1e1e1e] px-6 py-3 hover:border-[#c9956a] hover:text-[#c9956a] transition-all duration-300"
-              >
-                Get in Touch
-                <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
+              {mailto && (
+                <a
+                  href={mailto}
+                  className="group inline-flex items-center gap-2 font-[family-name:var(--font-syne)] text-xs tracking-[0.15em] uppercase text-[#6b6b6b] border border-[#1e1e1e] px-6 py-3 hover:border-[#c9956a] hover:text-[#c9956a] transition-all duration-300"
+                >
+                  Get in Touch
+                  <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+              )}
             </div>
           </div>
         </FadeIn>
@@ -131,9 +135,13 @@ export default async function AboutPage() {
               </div>
               <div>
                 <p className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.3em] uppercase text-[#6b6b6b] mb-1.5">Email</p>
-                <a href={`mailto:${email}`} className="font-[family-name:var(--font-syne)] text-sm text-[#c9956a] hover:text-[#e0b48a] transition-colors">
-                  {email}
-                </a>
+                {mailto ? (
+                  <a href={mailto} className="font-[family-name:var(--font-syne)] text-sm text-[#c9956a] hover:text-[#e0b48a] transition-colors">
+                    {email}
+                  </a>
+                ) : (
+                  <p className="font-[family-name:var(--font-syne)] text-sm text-[#c9956a]">{email}</p>
+                )}
               </div>
             </div>
           </div>
@@ -192,13 +200,15 @@ export default async function AboutPage() {
               {aboutCTAHeadline}
             </h2>
           </div>
-          <a
-            href={`mailto:${email}`}
-            className="group inline-flex items-center gap-3 font-[family-name:var(--font-syne)] text-sm tracking-[0.15em] uppercase text-[#f0ede8] border border-[#1e1e1e] px-8 py-4 hover:border-[#c9956a] hover:text-[#c9956a] transition-all duration-300 shrink-0"
-          >
-            Write to me
-            <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </a>
+          {mailto && (
+            <a
+              href={mailto}
+              className="group inline-flex items-center gap-3 font-[family-name:var(--font-syne)] text-sm tracking-[0.15em] uppercase text-[#f0ede8] border border-[#1e1e1e] px-8 py-4 hover:border-[#c9956a] hover:text-[#c9956a] transition-all duration-300 shrink-0"
+            >
+              Write to me
+              <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+          )}
         </div>
       </FadeIn>
 

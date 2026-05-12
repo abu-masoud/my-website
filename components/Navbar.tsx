@@ -23,10 +23,6 @@ export default function Navbar({ siteName = "Studio" }: { siteName?: string }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -85,6 +81,7 @@ export default function Navbar({ siteName = "Studio" }: { siteName?: string }) {
                 <li key={href}>
                   <Link
                     href={href}
+                    onClick={() => setOpen(false)}
                     className={`font-[family-name:var(--font-syne)] text-xl font-600 transition-colors ${
                       active ? "text-[#c9956a]" : "text-[#f0ede8]"
                     }`}
